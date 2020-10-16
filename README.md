@@ -1,8 +1,6 @@
 # teleplan
 API de Crud de planos de telefonia
 
-<iframe width="768" height="432" src="https://miro.com/app/live-embed/o9J_kiGHPQo=/?moveToViewport=-800,-445,1433,845" frameBorder="0" scrolling="no" allowFullScreen></iframe>
-
 A API disponibiliza as seguintes funções:
 
 -Cadastro de um plano
