@@ -13,7 +13,7 @@ public class Plano {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private int codigoDDD;
+	private String codigoDDD;
 	private int minutos;
 	private int franquiaDeInternet;
 	private double valor;
@@ -29,10 +29,10 @@ public class Plano {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCodigoDDD() {
+	public String getCodigoDDD() {
 		return codigoDDD;
 	}
-	public void setCodigoDDD(int codigo) {
+	public void setCodigoDDD(String codigo) {
 		this.codigoDDD = codigo;
 	}
 	public int getMinutos() {
