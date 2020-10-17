@@ -42,12 +42,14 @@ public class PlanoRepositoryTests {
 		assertEquals(plano.getId(), planoAux.getId());
 	}
 
+	@DisplayName("deveNaoRetornarPlanosSeNaoExistirNenhum")
 	@Test
 	public void deveNaoRetornarPlanosSeNaoExistirNenhum() {
 		Iterable<Plano> planos = repository.findAll();
 		assertThat(planos).isEmpty();
 	}
 
+	@DisplayName("deveRetornarTodosOsPlanos")
 	@Test
 	public void deveRetornarTodosOsPlanos() {
 		Tipo tipo = new Tipo(1, "Pré");
@@ -67,6 +69,7 @@ public class PlanoRepositoryTests {
 	    assertThat(planos).hasSize(3).contains(plano, plano2, plano3);
 	}
 
+	@DisplayName("deveRetornarUmPlanoPeloId")
 	@Test
 	public void deveRetornarUmPlanoPeloId() {
 		Tipo tipo = new Tipo(1, "Pós");
@@ -82,6 +85,7 @@ public class PlanoRepositoryTests {
 	    assertThat(planoAux).isEqualTo(plano1);
 	}
 
+	@DisplayName("deveRetornarOsPlanosDeUmDeterminadoDDD")
 	@Test
 	public void deveRetornarOsPlanosDeUmDeterminadoDDD() {
 		Tipo tipo = new Tipo(1, "Pré");
@@ -102,6 +106,7 @@ public class PlanoRepositoryTests {
 	    assertThat(planos).hasSize(2).contains(plano, plano2);
 	}
 
+	@DisplayName("deveRetornarOsPlanosDeUmDeterminadoTipo")
 	@Test
 	public void deveRetornarOsPlanosDeUmDeterminadoTipo() {
 		Tipo tipo = new Tipo(1, "Pré");
@@ -121,6 +126,7 @@ public class PlanoRepositoryTests {
 	    assertThat(planos).hasSize(2).contains(plano, plano2);
 	}
 
+	@DisplayName("deveAtualizarUmPlanoPeloId")
 	@Test
 	public void deveAtualizarUmPlanoPeloId() {
 		Tipo tipo = new Tipo(1, "Pré");
@@ -139,6 +145,7 @@ public class PlanoRepositoryTests {
 		
 	}
 
+	@DisplayName("deveDeletarUmPlanopeloId")
 	@Test
 	public void deveDeletarUmPlanopeloId() {
 		Tipo tipo = new Tipo(1, "Pré");
@@ -150,6 +157,7 @@ public class PlanoRepositoryTests {
 		assertEquals(elemento, Optional.empty());
 	}
 
+	@DisplayName("deveDeletarTodosOsPlanos")
 	@Test
 	public void deveDeletarTodosOsPlanos() {
 		Tipo tipo = new Tipo(1, "Pré");
@@ -172,6 +180,7 @@ public class PlanoRepositoryTests {
 		
 	}
 	
+	@DisplayName("deveRetornarPlanosPorDDDETipo")
 	@Test
 	public void deveRetornarPlanosPorDDDETipo() {
 		Tipo tipo = new Tipo(2, "Pós");
@@ -192,6 +201,7 @@ public class PlanoRepositoryTests {
 	    assertThat(list).hasSize(2);
 	}
 	
+	@DisplayName("deveRetornarPlanosPorDDDEOperadora")
 	@Test
 	public void deveRetornarPlanosPorDDDEOperadora() {
 		Tipo tipo = new Tipo(1, "Pré");
@@ -211,6 +221,7 @@ public class PlanoRepositoryTests {
 	    assertThat(list).hasSize(2);
 	}
 	
+	@DisplayName("deveRetornarPlanosPorDDDEId")
 	@Test
 	public void deveRetornarPlanosPorDDDEId() {
 		Tipo tipo = new Tipo(1, "Pré");
