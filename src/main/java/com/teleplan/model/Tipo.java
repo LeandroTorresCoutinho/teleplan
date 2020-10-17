@@ -12,20 +12,20 @@ public class Tipo {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private long id;
 	private String descricao;
 	
 	public Tipo() {
 		super();
 	}
 
-	public Tipo(int id, String descricao) {
+	public Tipo(long id, String descricao) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 	}
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	
