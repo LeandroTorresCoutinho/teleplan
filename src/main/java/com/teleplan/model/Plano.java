@@ -17,11 +17,22 @@ public class Plano {
 	private int minutos;
 	private int franquiaDeInternet;
 	private double valor;
-	
+	private String operadora;	
+		
 	@ManyToOne
 	@JoinColumn(name="id")
 	private Tipo idTipo;
-	private String operadora;	
+	
+	
+	public Plano(String codigoDDD, int minutos, int franquiaDeInternet, double valor, Tipo idTipo, String operadora) {
+		super();
+		this.codigoDDD = codigoDDD;
+		this.minutos = minutos;
+		this.franquiaDeInternet = franquiaDeInternet;
+		this.valor = valor;
+		this.idTipo = idTipo;
+		this.operadora = operadora;
+	}
 	
 	public int getId() {
 		return id;
