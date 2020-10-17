@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -170,5 +171,64 @@ public class PlanoRepositoryTests {
 	    assertThat(planos).hasSize(0);
 		
 	}
+	
+	@Test
+	public void deveRetornarPlanosPorDDDETipo() {
+		Tipo tipo = new Tipo(2, "Pós");
+		Plano plano = new Plano("022", 200, 200, 200.00, tipo, "claro");
+		plano = repository.save(plano);
+		
+		Tipo tipo2 = new Tipo(2, "Pós");
+		Plano plano2 = new Plano("022", 200, 200, 200.00, tipo2, "tim");
+		plano2 = repository.save(plano2);
+		
+		Tipo tipo3 = new Tipo(3, "Controle");
+		Plano plano3 = new Plano("022", 200, 200, 200.00, tipo3, "vivo");
+		plano3 = repository.save(plano3);
+		
+		List<Plano> list = repository.findByCodigoDDDAndIdTipoAllIgnoreCase("022", tipo);
+		
+
+	    assertThat(list).hasSize(2);
+	}
+	
+	@Test
+	public void deveRetornarPlanosPorDDDEOperadora() {
+		Tipo tipo = new Tipo(1, "Pré");
+		Plano plano = new Plano("022", 100, 100, 100.00, tipo, "claro");
+		plano = repository.save(plano);
+		
+		Tipo tipo2 = new Tipo(2, "Pós");
+		Plano plano2 = new Plano("022", 200, 200, 200.00, tipo2, "claro");
+		plano2 = repository.save(plano2);
+		
+		Tipo tipo3 = new Tipo(3, "Controle");
+		Plano plano3 = new Plano("022", 200, 200, 200.00, tipo3, "vivo");
+		plano3 = repository.save(plano3);
+		
+		List<Plano> list = repository.findByCodigoDDDAndOperadoraAllIgnoreCase("022", "claro");
+		
+	    assertThat(list).hasSize(2);
+	}
+	
+	@Test
+	public void deveRetornarPlanosPorDDDEId() {
+		Tipo tipo = new Tipo(1, "Pré");
+		Plano plano = new Plano("022", 100, 100, 100.00, tipo, "claro");
+		plano = repository.save(plano);
+		
+		Tipo tipo2 = new Tipo(2, "Pós");
+		Plano plano2 = new Plano("022", 200, 200, 200.00, tipo2, "claro");
+		plano2 = repository.save(plano2);
+		
+		Tipo tipo3 = new Tipo(3, "Controle");
+		Plano plano3 = new Plano("022", 200, 200, 200.00, tipo3, "vivo");
+		plano3 = repository.save(plano3);
+		
+		Optional<Plano> elemento = repository.findByCodigoDDDAndId("022", plano.getId());
+		
+	    assertThat(elemento.get()).isEqualTo(plano);
+	}
+	
 
 }
