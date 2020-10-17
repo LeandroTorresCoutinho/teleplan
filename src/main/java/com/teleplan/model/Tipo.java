@@ -15,6 +15,10 @@ public class Tipo {
 	private int id;
 	private String descricao;
 	
+	public Tipo() {
+		super();
+	}
+
 	public Tipo(int id, String descricao) {
 		super();
 		this.id = id;
