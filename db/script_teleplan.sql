@@ -19,8 +19,14 @@ create table plano(
     primary key(id)
 );
 
-CREATE USER 'api_teleplan'@'localhost' IDENTIFIED BY 'T&l&Pl@N';
-GRANT INSERT,UPDATE,DELETE,SELECT ON db_teleplan.* TO 'api_teleplan'@'localhost';
+alter table plano add constraint FKgr1lwc9rh5ig7lg3cbmn2nne foreign key (id_tipo) references tipo (id);
 
+CREATE USER 'api_teleplan'@'localhost' IDENTIFIED BY 'T&l&Pl@N';
+
+GRANT ALL PRIVILEGES ON db_teleplan.* TO 'api_teleplan'@'localhost';
+/*Na primeira subida do servidor da API coloco grant como all privileges para que as sequences sejam criadas, mas revoko depois e só coloco para INSERT,UPDATE,DELETE e SELECT */
+/*
+REVOKE privileges ON db_teleplan.* FROM 'api_teleplan'@'localhost';
+GRANT INSERT,UPDATE,DELETE, SELECT ON db_teleplan.* TO 'api_teleplan'@'localhost';*/
 
 FLUSH PRIVILEGES;
