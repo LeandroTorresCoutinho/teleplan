@@ -25,7 +25,10 @@ public class Plano {
 	@JoinColumn(name="idTipo")
 	private Tipo idTipo;
 	
-	
+	public Plano() {
+		super();
+	}
+
 	public Plano(String codigoDDD, int minutos, int franquiaDeInternet, double valor, Tipo idTipo, String operadora) {
 		super();
 		this.codigoDDD = codigoDDD;
