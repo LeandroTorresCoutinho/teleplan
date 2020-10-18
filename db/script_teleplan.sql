@@ -11,13 +11,15 @@ create table plano(
 	id int AUTO_INCREMENT,
 	codigoDDD varchar(3),
     minutos int,
-    franquiaDeInternet int,
+    franquia_de_internet int,
     valor decimal(8,2),
     operadora varchar(32),
-    idTipo int,
+    id_tipo int,
     foreign key(idTipo) references tipo(id),
     primary key(id)
 );
+
+
 
 alter table plano add constraint FKgr1lwc9rh5ig7lg3cbmn2nne foreign key (id_tipo) references tipo (id);
 
