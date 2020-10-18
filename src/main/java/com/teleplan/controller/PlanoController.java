@@ -6,7 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.teleplan.model.Plano;
@@ -18,6 +21,47 @@ public class PlanoController {
 	@Autowired
 	private PlanoService planoService;
 
+	/* Método de inserção de um plano
+	 * @param: String ddd
+	 * @param: int minutos
+	 * @param: int franquiaDeInternet
+	 * @param: double valor
+	 * @param: String operadora
+	 * @param: String tipo
+	 * @Return: Plano 
+	 * */	
+	@PostMapping("/plano")
+	public ResponseEntity<Plano> save(@RequestParam String ddd,@RequestParam int minutos,
+			@RequestParam int franquiaDeInternet, @RequestParam double valor,@RequestParam String operadora,@RequestParam String tipo){
+		return ResponseEntity.ok(planoService.save(ddd,minutos,franquiaDeInternet, valor, tipo, operadora));
+	}
+	
+	/* Método de atualização de um plano
+	 * @param: long id
+	 * @param: String ddd
+	 * @param: int minutos
+	 * @param: int franquiaDeInternet
+	 * @param: double valor
+	 * @param: String operadora
+	 * @param: String tipo
+	 * @Return: Plano 
+	 * */	
+	@PutMapping("/plano")
+	public ResponseEntity<Plano> update(@RequestParam long id,@RequestParam String ddd,@RequestParam int minutos,
+			@RequestParam int franquiaDeInternet, @RequestParam double valor,@RequestParam String operadora,@RequestParam String tipo){
+		return ResponseEntity.ok(planoService.update(id,ddd,minutos,franquiaDeInternet, valor, tipo, operadora));
+	}
+	
+	/* Método de deleção de um plano
+	 * @param: long id
+	 * @Return: void 
+	 * */	
+	@DeleteMapping("/plano")
+	public ResponseEntity<String> delete(@RequestParam long id){
+		planoService.deleteById(id);
+		return ResponseEntity.ok("Plano deletado com Sucesso.");
+	}
+	
 	/* Método de busca de planos pelo codigo DDD
 	 * @param: String ddd
 	 * @Return: List<Plano> 

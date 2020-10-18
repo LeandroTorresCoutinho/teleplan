@@ -62,7 +62,6 @@ public class PlanoServiceImpl implements PlanoService{
 			
 	}
 	
-
 	@Override
 	public Plano update(long id, String codigoDDD, int minutos, int franquiaDeInternet, double valor, String tipo,
 			String operadora) {
