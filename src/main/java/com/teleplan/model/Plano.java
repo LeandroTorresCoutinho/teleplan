@@ -1,5 +1,6 @@
 package com.teleplan.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Plano {
 	private double valor;
 	private String operadora;	
 		
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REFRESH)
 	@JoinColumn(name="id_tipo")
 	private Tipo tipo;
 	
