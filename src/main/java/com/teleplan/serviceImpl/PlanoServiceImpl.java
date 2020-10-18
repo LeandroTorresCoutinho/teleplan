@@ -49,4 +49,35 @@ public class PlanoServiceImpl implements PlanoService{
 		return planoRepository.findByCodigoDDDAndId(ddd, id);
 	}
 
+	@Override
+	public Plano save(String codigoDDD, int minutos, int franquiaDeInternet, double valor, String tipo,
+			String operadora) {
+		Optional<Tipo> tipoAux = tipoRepository.findByDescricaoAllIgnoreCase(tipo);
+		if(tipoAux.isPresent()) {
+			Plano plano = new Plano(codigoDDD, minutos, franquiaDeInternet,valor,tipoAux.get(),operadora);
+			return planoRepository.save(plano);
+		}else {
+			throw new IllegalArgumentException("Tipo de plano inexistente, favor escolher entre(Controle, Pré, Pós)");
+		}
+			
+	}
+	
+
+	@Override
+	public Plano update(long id, String codigoDDD, int minutos, int franquiaDeInternet, double valor, String tipo,
+			String operadora) {
+		Optional<Tipo> tipoAux = tipoRepository.findByDescricaoAllIgnoreCase(tipo);
+		if(tipoAux.isPresent()) {
+			Plano plano = new Plano(id, codigoDDD, minutos, franquiaDeInternet,valor,tipoAux.get(),operadora);
+			return planoRepository.save(plano);
+		}else {
+			throw new IllegalArgumentException("Tipo de plano inexistente, favor escolher entre(Controle, Pré, Pós)");
+		}
+			
+	}
+
+	@Override
+	public void deleteById(long id) {
+		planoRepository.deleteById(id);
+	}
 }
