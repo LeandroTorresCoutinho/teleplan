@@ -9,6 +9,3 @@ insert into plano(codigoDDD, minutos, franquia_de_internet ,valor, operadora, id
 insert into plano(codigoDDD, minutos, franquia_de_internet ,valor, operadora, id_tipo) values('011','100', '100', '100.00', 'claro', '1');
 insert into plano(codigoDDD, minutos, franquia_de_internet ,valor, operadora, id_tipo) values('011','200', '200', '200.00', 'claro', '2');
 insert into plano(codigoDDD, minutos, franquia_de_internet ,valor, operadora, id_tipo) values('011','300', '300', '300.00', 'vivo', '2');
-
-
-
