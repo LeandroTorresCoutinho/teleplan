@@ -39,6 +39,16 @@ public class Plano {
 		this.operadora = operadora;
 	}
 	
+	public Plano(long id, String codigoDDD, int minutos, int franquiaDeInternet, double valor, Tipo tipo, String operadora) {
+		super();
+		this.codigoDDD = codigoDDD;
+		this.minutos = minutos;
+		this.franquiaDeInternet = franquiaDeInternet;
+		this.valor = valor;
+		this.tipo = tipo;
+		this.operadora = operadora;
+	}
+	
 	public long getId() {
 		return id;
 	}
