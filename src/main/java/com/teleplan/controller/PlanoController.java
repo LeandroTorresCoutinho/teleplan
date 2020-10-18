@@ -50,11 +50,13 @@ public class PlanoController {
 		return ResponseEntity.ok(plano.get());
 	}
 
-	//TODO continuar aqui
-//	@GetMapping("/plano/buscaPeloDDDETipo")
-//	public ResponseEntity<List<Plano>> findByCodigoDDDAndIdTipoAllIgnoreCase(@RequestParam String ddd, @RequestParam String tipo){
-//		
-//		
-//		return planoRepository.findByCodigoDDDAndIdTipoAllIgnoreCase(ddd, tipo);
-//	}
+	/* Método de busca de planos pelo codigo DDD e pela descricao do tipo
+	 * @param: String ddd
+	 * @param: String tipo 
+	 * @Return: Plano 
+	 * */	
+	@GetMapping("/plano/buscaPeloDDDETipo")
+	public ResponseEntity<List<Plano>> findByCodigoDDDAndTipoAllIgnoreCase(@RequestParam String ddd, @RequestParam String tipo){
+		return ResponseEntity.ok(planoService.findByCodigoDDDAndTipoAllIgnoreCase(ddd, tipo));
+	}
 }

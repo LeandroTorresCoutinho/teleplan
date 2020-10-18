@@ -22,20 +22,20 @@ public class Plano {
 	private String operadora;	
 		
 	@ManyToOne
-	@JoinColumn(name="idTipo")
-	private Tipo idTipo;
+	@JoinColumn(name="id_tipo")
+	private Tipo tipo;
 	
 	public Plano() {
 		super();
 	}
 
-	public Plano(String codigoDDD, int minutos, int franquiaDeInternet, double valor, Tipo idTipo, String operadora) {
+	public Plano(String codigoDDD, int minutos, int franquiaDeInternet, double valor, Tipo tipo, String operadora) {
 		super();
 		this.codigoDDD = codigoDDD;
 		this.minutos = minutos;
 		this.franquiaDeInternet = franquiaDeInternet;
 		this.valor = valor;
-		this.idTipo = idTipo;
+		this.tipo = tipo;
 		this.operadora = operadora;
 	}
 	
@@ -69,11 +69,11 @@ public class Plano {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	public Tipo getIdTipo() {
-		return idTipo;
+	public Tipo getTipo() {
+		return tipo;
 	}
-	public void setIdTipo(Tipo idTipo) {
-		this.idTipo = idTipo;
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 	public String getOperadora() {
 		return operadora;

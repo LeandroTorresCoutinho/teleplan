@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.teleplan.model.Plano;
 import com.teleplan.model.Tipo;
 import com.teleplan.repository.PlanoRepository;
+import com.teleplan.repository.TipoRepository;
 import com.teleplan.service.PlanoService;
 
 @Service
@@ -16,6 +17,9 @@ public class PlanoServiceImpl implements PlanoService{
 
 	@Autowired
 	private PlanoRepository planoRepository;
+
+	@Autowired
+	private TipoRepository tipoRepository;
 	
 	@Override
 	public List<Plano> findByCodigoDDD(String ddd) {
@@ -23,13 +27,16 @@ public class PlanoServiceImpl implements PlanoService{
 	}
 
 	@Override
-	public List<Plano> findByIdTipo(Tipo tipo) {
-		return planoRepository.findByIdTipo(tipo);
+	public List<Plano> findByTipo(Tipo tipo) {
+		return planoRepository.findByTipo(tipo);
 	}
 
 	@Override
-	public List<Plano> findByCodigoDDDAndIdTipoAllIgnoreCase(String ddd, Tipo tipo) {
-		return planoRepository.findByCodigoDDDAndIdTipoAllIgnoreCase(ddd, tipo);
+	public List<Plano> findByCodigoDDDAndTipoAllIgnoreCase(String ddd, String tipo) {
+		Optional<Tipo> tipoAux = tipoRepository.findByDescricaoAllIgnoreCase(tipo);
+		if(tipoAux.isPresent())
+			return planoRepository.findByCodigoDDDAndTipoAllIgnoreCase(ddd, tipoAux.get());
+		return null;
 	}
 
 	@Override

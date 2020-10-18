@@ -121,7 +121,7 @@ public class PlanoRepositoryTests {
 		plano3 = repository.save(plano3);
 		
 
-	    Iterable<Plano> planos = repository.findByIdTipo(tipo);
+	    Iterable<Plano> planos = repository.findByTipo(tipo);
 
 	    assertThat(planos).hasSize(2).contains(plano, plano2);
 	}
@@ -195,7 +195,7 @@ public class PlanoRepositoryTests {
 		Plano plano3 = new Plano("022", 200, 200, 200.00, tipo3, "vivo");
 		plano3 = repository.save(plano3);
 		
-		List<Plano> list = repository.findByCodigoDDDAndIdTipoAllIgnoreCase("022", tipo);
+		List<Plano> list = repository.findByCodigoDDDAndTipoAllIgnoreCase("022", tipo);
 		
 
 	    assertThat(list).hasSize(2);
