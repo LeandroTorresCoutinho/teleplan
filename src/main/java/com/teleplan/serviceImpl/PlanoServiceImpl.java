@@ -65,14 +65,25 @@ public class PlanoServiceImpl implements PlanoService{
 	@Override
 	public Plano update(long id, String codigoDDD, int minutos, int franquiaDeInternet, double valor, String tipo,
 			String operadora) {
+		Optional<Plano> plano = planoRepository.findById(id);
+		Plano planoAux = new Plano();
+		if(plano.isPresent()) {
+			planoAux = plano.get();
+		}else {
+			throw new IllegalArgumentException("Plano não encontrado");
+		}
 		Optional<Tipo> tipoAux = tipoRepository.findByDescricaoAllIgnoreCase(tipo);
 		if(tipoAux.isPresent()) {
-			Plano plano = new Plano(id, codigoDDD, minutos, franquiaDeInternet,valor,tipoAux.get(),operadora);
-			return planoRepository.save(plano);
+			planoAux.setTipo(tipoAux.get());
 		}else {
 			throw new IllegalArgumentException("Tipo de plano inexistente, favor escolher entre(Controle, Pré, Pós)");
 		}
-			
+		planoAux.setCodigoDDD(codigoDDD);
+		planoAux.setFranquiaDeInternet(franquiaDeInternet);
+		planoAux.setMinutos(minutos);
+		planoAux.setOperadora(operadora);
+		planoAux.setValor(valor);
+		return planoRepository.save(planoAux);
 	}
 
 	@Override
