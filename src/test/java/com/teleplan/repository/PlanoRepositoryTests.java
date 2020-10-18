@@ -7,6 +7,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
@@ -26,6 +27,12 @@ public class PlanoRepositoryTests {
 
 	@Autowired
 	private PlanoRepository repository;
+	
+	
+	@Before
+	public void deletarTodoBanco() {
+		repository.deleteAll();
+	}
 
 	@DisplayName("deveSalvarUmPlano")
 	@Test
@@ -184,18 +191,18 @@ public class PlanoRepositoryTests {
 	@Test
 	public void deveRetornarPlanosPorDDDETipo() {
 		Tipo tipo = new Tipo(2, "Pós");
-		Plano plano = new Plano("022", 200, 200, 200.00, tipo, "claro");
+		Plano plano = new Plano("111", 200, 200, 200.00, tipo, "claro");
 		plano = repository.save(plano);
 		
 		Tipo tipo2 = new Tipo(2, "Pós");
-		Plano plano2 = new Plano("022", 200, 200, 200.00, tipo2, "tim");
+		Plano plano2 = new Plano("111", 200, 200, 200.00, tipo2, "tim");
 		plano2 = repository.save(plano2);
 		
 		Tipo tipo3 = new Tipo(3, "Controle");
-		Plano plano3 = new Plano("022", 200, 200, 200.00, tipo3, "vivo");
+		Plano plano3 = new Plano("111", 200, 200, 200.00, tipo3, "vivo");
 		plano3 = repository.save(plano3);
 		
-		List<Plano> list = repository.findByCodigoDDDAndTipoAllIgnoreCase("022", tipo);
+		List<Plano> list = repository.findByCodigoDDDAndTipoAllIgnoreCase("111", tipo);
 		
 
 	    assertThat(list).hasSize(2);
@@ -205,18 +212,18 @@ public class PlanoRepositoryTests {
 	@Test
 	public void deveRetornarPlanosPorDDDEOperadora() {
 		Tipo tipo = new Tipo(1, "Pré");
-		Plano plano = new Plano("022", 100, 100, 100.00, tipo, "claro");
+		Plano plano = new Plano("111", 100, 100, 100.00, tipo, "claro");
 		plano = repository.save(plano);
 		
 		Tipo tipo2 = new Tipo(2, "Pós");
-		Plano plano2 = new Plano("022", 200, 200, 200.00, tipo2, "claro");
+		Plano plano2 = new Plano("111", 200, 200, 200.00, tipo2, "claro");
 		plano2 = repository.save(plano2);
 		
 		Tipo tipo3 = new Tipo(3, "Controle");
-		Plano plano3 = new Plano("022", 200, 200, 200.00, tipo3, "vivo");
+		Plano plano3 = new Plano("111", 200, 200, 200.00, tipo3, "vivo");
 		plano3 = repository.save(plano3);
 		
-		List<Plano> list = repository.findByCodigoDDDAndOperadoraAllIgnoreCase("022", "claro");
+		List<Plano> list = repository.findByCodigoDDDAndOperadoraAllIgnoreCase("111", "claro");
 		
 	    assertThat(list).hasSize(2);
 	}
@@ -225,18 +232,18 @@ public class PlanoRepositoryTests {
 	@Test
 	public void deveRetornarPlanosPorDDDEId() {
 		Tipo tipo = new Tipo(1, "Pré");
-		Plano plano = new Plano("022", 100, 100, 100.00, tipo, "claro");
+		Plano plano = new Plano("111", 100, 100, 100.00, tipo, "claro");
 		plano = repository.save(plano);
 		
 		Tipo tipo2 = new Tipo(2, "Pós");
-		Plano plano2 = new Plano("022", 200, 200, 200.00, tipo2, "claro");
+		Plano plano2 = new Plano("111", 200, 200, 200.00, tipo2, "claro");
 		plano2 = repository.save(plano2);
 		
 		Tipo tipo3 = new Tipo(3, "Controle");
-		Plano plano3 = new Plano("022", 200, 200, 200.00, tipo3, "vivo");
+		Plano plano3 = new Plano("111", 200, 200, 200.00, tipo3, "vivo");
 		plano3 = repository.save(plano3);
 		
-		Optional<Plano> elemento = repository.findByCodigoDDDAndId("022", plano.getId());
+		Optional<Plano> elemento = repository.findByCodigoDDDAndId("111", plano.getId());
 		
 	    assertThat(elemento.get()).isEqualTo(plano);
 	}
