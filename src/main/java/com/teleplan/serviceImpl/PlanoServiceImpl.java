@@ -3,6 +3,8 @@ package com.teleplan.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,7 +59,7 @@ public class PlanoServiceImpl implements PlanoService{
 			Plano plano = new Plano(codigoDDD, minutos, franquiaDeInternet,valor,tipoAux.get(),operadora);
 			return planoRepository.save(plano);
 		}else {
-			throw new IllegalArgumentException("Tipo de plano inexistente, favor escolher entre(Controle, Pré, Pós)");
+			throw new EntityNotFoundException("Tipo de plano inexistente, favor escolher entre(Controle, Pré, Pós)");
 		}
 			
 	}
@@ -70,13 +72,13 @@ public class PlanoServiceImpl implements PlanoService{
 		if(plano.isPresent()) {
 			planoAux = plano.get();
 		}else {
-			throw new IllegalArgumentException("Plano não encontrado");
+			throw new EntityNotFoundException("Plano não encontrado");
 		}
 		Optional<Tipo> tipoAux = tipoRepository.findByDescricaoAllIgnoreCase(tipo);
 		if(tipoAux.isPresent()) {
 			planoAux.setTipo(tipoAux.get());
 		}else {
-			throw new IllegalArgumentException("Tipo de plano inexistente, favor escolher entre(Controle, Pré, Pós)");
+			throw new EntityNotFoundException("Tipo de plano inexistente, favor escolher entre(Controle, Pré, Pós)");
 		}
 		planoAux.setCodigoDDD(codigoDDD);
 		planoAux.setFranquiaDeInternet(franquiaDeInternet);
