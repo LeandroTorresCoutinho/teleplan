@@ -42,6 +42,7 @@ public class Plano {
 	
 	public Plano(long id, String codigoDDD, int minutos, int franquiaDeInternet, double valor, Tipo tipo, String operadora) {
 		super();
+		this.id = id;
 		this.codigoDDD = codigoDDD;
 		this.minutos = minutos;
 		this.franquiaDeInternet = franquiaDeInternet;
