@@ -18,3 +18,5 @@ O plano de telefonia tem as seguintes características:
 -Operadora
 
 Regra: Cada plano pode estar ou não disponível para um ou mais DDDs.
+
+Feita em Java 8 com SpringBoot, Spring Data JPA, banco de dados mysql.
