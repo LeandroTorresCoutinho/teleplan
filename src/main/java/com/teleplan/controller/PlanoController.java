@@ -35,7 +35,12 @@ public class PlanoController {
 	@PostMapping("/plano")
 	public ResponseEntity<Plano> save(@RequestParam String codigoDDD,@RequestParam int minutos,
 			@RequestParam int franquiaDeInternet, @RequestParam double valor,@RequestParam String operadora,@RequestParam String tipo){
-		return ResponseEntity.ok(planoService.save(codigoDDD,minutos,franquiaDeInternet, valor, tipo, operadora));
+		try {
+			return ResponseEntity.ok(planoService.save(codigoDDD,minutos,franquiaDeInternet, valor, tipo, operadora));
+		}catch(Exception e) {
+			System.out.println(e.getMessage());;
+		}
+		return null;
 	}
 	
 	/* Método de atualização de um plano
